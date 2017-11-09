@@ -1,0 +1,94 @@
+媒体查询
+
+        例子；@media screen and （max-width：460px）{
+                	div{
+                	    width：300px；
+                	    height：600px；
+                	    border；30px solid yllow；
+                	    background：#000；
+                	   }
+                }
+                
+ 当屏幕发生变化，根据设置的最大值宽度或者最小宽度时，读取大括号中的代码比如	；以下 
+              @madia screen and（当屏幕发生变化，最大宽度达到某一个值的值的时候，比如max-width；960px）{
+                        会执行一下代码
+                   div{
+                       width；300px；
+                       height；600px；
+                       border；30px solid yellow；
+                       background；#000；
+
+                       }
+                }
+                
+
+  <meta name="viewport" content="width=device-width,initial-scal=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+             width:控制viewport的大小，可以制定一个数值或一个特殊的值
+                  如：device-width就是设备的宽度（单位为缩放100%的css像素）
+
+             initial-scale；
+                     初始缩放，就是页面开始缩放的程度，是一个浮点数
+                     例如；initial-scale=1.0，页面开始的时候，就是1：1的比例
+                           maximum-scale=1.0，minimum-scale=1.0最大缩放和最小缩放，允许放大或缩小多少倍
+                         
+
+             user-scalable=no
+                       是否允许用户调整页面
+                       如果维YES 用户可以改变
+                       如果为NO 用户不可以改变
+                       如果为NO ，用户不能缩放，maximum-scale=1.0.minimum-scale=1.0 会失效
+
+
+
+
+     响应式布局
+         百分比布局
+
+
+             布局百分比
+             width
+             padding-left
+             padding-right
+             margin-left
+             margin-right
+             left
+             right
+
+              需要牢记公式
+
+                 目标元素的宽度/父级元素的宽度=百分比宽度
+        
+              提示：
+                  高度的增加或者减少需要配合媒体查询
+                      高度；
+                         height；
+                         padding-top
+                         padding-bottom
+                         margin-top
+                         margin-bottomtop
+                         bottom
+                    @media screen and
+                    (){
+
+                    }
+
+       图片百分比
+            图片的宽度和高度比较弹性化
+                   图片如果不设置宽度和高度，或原始显示，当设置了图片的宽度百分比时，宽度发生变化，高度也会等比缩放
+
+            提示，图片有时候太大，或超出，最好设置一个上限值，max-width或者 max-height
+
+       文字百分比
+             em和rem
+             em父级的文字大小的倍数   父级大小是多少，决定子级文字em的大小
+
+
+             rem就是针对HTMl文字字体大小
+
+             一般响应式布局都用rem 通过媒体查询改变html的文字大小，就可以整体改变所有页面中文字大小
+
+     偷懒响应式布局方法；
+             <meta name="viewport" content="width=640, user-scalaable=no, target-densitydpi=device-dpi">
+
+             
+             width取值与页面定义的宽度一致，目前的最佳实践，缺点android2。3.5以下版本不支持，可以通过用户 代理判断

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	    body{
+	    	
+	    	margin:0;
+	    	padding:20px;
+	    }
+        .box{
+        	/*display: inline-block;给父级加相对定位，再加上左右内边距等于左右两边的盒子宽度*/
+            overflow: hidden;
+        	background-color:#eee;
+        	border:1px solid #999;
+        	position: relative;
+        	padding-right:162px;
+        	padding-left:282px
+
+        		
+        }
+		.leftBox{
+			/*给盒子相对于父级绝对定位*/
+			/*float: left;*/
+			width:200px;
+			height:150px;
+			padding:20px;
+			margin:20px;
+			border:1px solid #999;
+			background-color:#fff;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+		.leftBox div{
+            width:80px;
+			height:80px;
+			border:1px solid #999;
+			background-color:#eee;
+			float:left;
+		}
+		.ll{
+			float:left;
+			margin-left:25px;
+		}
+		.leftLogo{
+            text-align:center;
+            line-height:80px;
+		}
+		.main{
+			/*不设置宽度，盒子自动填满父级内容,父级有等于左右盒子宽度的左右内边框*/
+            padding:20px;
+            margin-top:20px;
+            margin-bottom:20px;	
+		    border:1px solid #999;
+			background-color:#fff;
+
+
+		}
+
+		.rightBox{
+			/*给右盒子相对父级绝对定位	*/
+			margin:20px 20px 20px 20px;
+			border:1px solid #999;
+			background-color:#fff;
+			position: absolute;
+			top:0;
+			right:0;
+		}
+		.rightBox div{
+			margin:20px;
+			width:80px;
+			height:80px;
+			border:1px solid #999;
+			background-color:#eee;
+		}
+        .rightBox span{
+        	font-size:10px;
+            line-height:80px;
+        }
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="leftBox">
+			<div class="leftLogo	">
+				<span>团队logo</span>
+			</div>
+			<span class="ll">团队名称</span>
+		</div>
+		<div class="main">
+			<p>这里只能用asad中文这里只能cc用ccccccccccccccccccc中文这里只能用中文这里只能用中文这里只</p>
+			<p>这里只能用中文这里只能用中文这里只能用中文这里只能用中文这里只</p>
+			<p>这里只能用中文这里只能用中文这里只能用中文这里只能用中文这里只</p>
+			<p>这里只能用中文这里只能用中文这里只能用中文这里只能用中文这里只</p>
+			<p>这里只能用中文这里只能用中文这里只能用中文这里只能用中文这里只</p>
+			<p>这里只能用中文这里只能用中文这里只能用中文这里只能用中文这里只</p>
+			<p>这里只能用中文这里只能用中文这里只能用中文这里只能用中文这里只</p>
+			<p>这里只能用中文这里只能用中文这里只能用中文这里只能用中文这里只</p>
+			<p>这里只能用中文这里只能用中文这里只能用中文这里只能用中文这里只</p>
+			<p>这里只能用中文这里只能用中文这里只能用中文这里只能用中文这里只</p>
+			<p>这里只能用中文这里只能用中文这里只能用中文这里只能用中文这里只</p>
+
+		</div>
+		<div class="rightBox">
+			<div><span>个人logo</span></div>
+			<div><span>个人logo</span></div>
+			<div><span>个人logo</span></div>
+			<div><span>个人logo</span></div>
+		</div>
+	</div>
+</body>
+</html>

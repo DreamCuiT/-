@@ -1,0 +1,95 @@
+   
+
+
+      width 宽
+      height  高
+      background 背景
+          背景色
+           background-color；颜色值 英文单词 十六进制 rgb
+          背景图
+            background-image；url（"图片路径"）
+          背景图平铺
+            background-repeat；on-repeat repeat-x repeat-y
+          背景图定位
+            background-position；第一个值（x轴的位置） 第二个值（y轴的位置）；
+               第一个值；left center riget30px
+               第二个值；top center bottom 100px;
+          复合写法
+             background；color image position repeat;
+
+          背景图滚动
+             background-attachment；fixed;
+
+          背景图尺寸
+             background-size；第一个值（x轴的比例） 第二个值（y轴的比例）;
+
+
+              提示；
+                 css3的样式 不兼容 
+
+
+  border 边框
+    复合写法
+      border；border-width border-style border-color;
+
+      border-width 边框宽度
+      border-style 边框样式 solid实线 dashed 虚线 dotted 点线（点线IE6不认）
+
+      border-color 边框颜色 英文单词 十六进制 rgb
+
+      border-radius 圆角
+
+      transparent  透明    
+
+
+ padding 内边距 内填充
+
+      padding-top 上内边距
+      padding-right 右内边距
+      padding-bottom 下内边距
+      padding-left 左内边距
+
+ padding的复合写法
+       padding：10px ; 一个值代表 上右下左都是10px
+       padding：10px 20px; 两个值 第一个值代表上下 第二个值代表左右
+       padding；10px 20px 40px; 三个值 第一个值代表上 第二个值代表左右第三个值代表下
+       padding；10px 20px 40px 80px;  四个值 第一个值代表上 第二个值代表右 第三个值代表下 第四个值代表左 	
+
+
+margin外边距
+
+      margin-top 上外边距
+      margin-right 右外边距
+      margin-bottom 下外边距
+      margin-left 左外边距
+
+ margin的复合写法
+       margin:  10px ; 一个值代表 上右下左都是10px
+       margin：10px 20px; 两个值 第一个值代表上下 第二个值代表左右
+       margin；10px 20px 40px; 三个值 第一个值代表上 第二个值代表左右第三个值代表下
+       margin；10px 20px 40px 80px;  四个值 第一个值代表上 第二个值代表右 第三个值代表下 第四个值代表左 	
+
+
+标签的嵌套 确定父子级关系
+
+     1.第一个子级的margin-top会在特定的情况下穿透父级
+         规避方法；
+             1.给父级加边框
+             2.给父级加overflow；hidden;
+             3.不要用margin-top，父级的padding-top代替
+    2.兄弟关系的margin-top和margin-bottom会叠压
+
+
+
+盒模型
+  
+  空间大小；
+    盒子的总宽度；
+    border-left+padding-left+width+padding-right+border-right
+    盒子的总高度；
+    border-top+padding-top+height+padding-bottom+border-bottom
+
+ 位置
+    margin
+
+

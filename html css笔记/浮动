@@ -1,0 +1,62 @@
+浮动
+  
+  display：inline-block；
+
+  浮动                                                                            当一个元素被浮动时，它被从文档的正常流程中取出（尽管仍然是其中的一部  分）。它被移到左边或右边，直到它碰到包含盒子的边缘或另一个浮动的元素。
+    float
+    浮动的特性：
+      1.浮动的元素排在同一排
+      2.浮动的元素的内容撑开宽度
+      3.浮动的元素支持所有css的样式
+      4.浮动的元素脱离文档流
+      5。浮动的元素提升层级半级
+     
+     
+    bfc
+      1.overflow 溢出
+           会重新计算元素空间
+          hidden 溢出隐藏
+          auto   溢出出现滚动条
+          scroll 出现滚动条  
+       2.元素的居中
+          margin：0 auto；
+       3.元素的伪类
+           伪类：就是css一些元素身上的特殊属性
+          ：hover 鼠标停留 
+          ：after在元素内容之后插入一些内容
+        浮动；其实就是使元素 脱离文档流，按照一定的方式排列，遇到相邻的浮动元素或父级的边界停下来。
+        
+        BFC 就是清浮动，就是用来处理浮动元素脱离文档流的问题
+
+             1.父级也浮动
+                 弊端；左右的margin：0 auto； 会失效；
+             2.父级加display：inline-block；
+                弊端；左右的额margin：0 auto； 会失效；
+                （如果需要让元素居中可以给父级加text-align：center）
+              3.给父级加高
+                 弊端：扩展性不好。
+              4.br标签
+                 写法：<br/>
+                 作用：换行
+              5.clear
+                  clear 元素的某一方向不允许出现其他的浮动元素
+                  left
+                  right
+                  both 推荐使用
+                  none
+                  小提示：
+                     不符W3C规范 违反结构 样式 行为 三者分离原则
+
+                     凡是clear:left或者clear:right起作用的地方，一定可以使用clear:both替换！
+
+                     原因在于，clear属性是让自身不能和前面的浮动元素相邻，注意这里“前面的”3个字，而float属性要么就left要么就right，不可能同时存在。由于clear属性对“后面的”浮动元素不闻不问，因此，当clear:left有效的时候，clear:right必定无效，也就是此时clear:left等同于设置clear:both，反之亦然。
+
+               6.伪类清浮动
+                    ：after{
+                    content："";display：block;clear：both;
+                    } 
+                      提示：目前主流方法，建议使用
+                      .fix{*zoom:1;}
+                      .fix:after{display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;}
+                                           
+              
