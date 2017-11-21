@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.flexbox{
+			
+			display:flex;/*设置伸缩容器*/
+			width:100%;
+			height:600px;
+			flex-flow:row nowrap;/*定义伸缩容器的主轴和侧轴*/
+
+			justify-content:space-between;/*定义伸缩项目沿着主轴线的对齐方式*。当一行上的所有伸缩项目都不能伸缩或可伸缩但是已经达到其最大长度时，这一属性才会对多余的空间进行分配。当项目溢出某一行时，这一属性也会在项目的对齐上施加一些控制*/
+			align-content:center;
+			flex:1 0 auto;
+		}
+		@media all and (max-width:640px){
+			.box4{
+				order:-1;
+			}
+			.flexbox{
+				align-content:flex-start;
+				justify-content:space-between;
+				flex-wrap:wrap;
+				
+			}
+			
+		}
+		.box1,.box2,.box3{
+			border:1px solid #f00;
+			padding:20px;
+			/*margin:0 auto;*/
+		}
+		.box1{
+			width:150px;
+			height:120px;
+		}
+		.box2{
+	 		width:150px;
+			height:100px;
+		}
+		.box3{
+			width:150px;
+			height:40px;
+
+		}
+		.box4{
+			width:150px;
+			height:200px;
+			border:1px solid #0f0;
+		    
+		}
+	</style>
+</head>
+<body>
+	<div class="flexbox">
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+	</div>
+</body>
+</html>
