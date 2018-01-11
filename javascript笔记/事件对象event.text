@@ -1,0 +1,40 @@
+
+
+   事件对象作用：
+      1.可以获得和那个按键结合
+      2.获得点击所在的位置
+      3.获得点击对应的标签
+
+
+        1.浏览器兼容
+          形参对象是针对于现代浏览器
+          IE不能通过形参获得事件对象，window.event
+
+        2.事件对象点击所在的位置
+          clienX和clientY ，针对于浏览器视窗而言
+        3.offsetX和offsetY：相对于自身而言
+
+        4.screenX和screenY；相对于显示屏
+
+        5.点击对应的标签：
+            target
+
+
+ 事件冒泡：
+     如果两个或者多个标签叠在一起，一旦这几个标签都有事件触发，那么在点击的时候同时触发这些事件，称之为事件冒泡
+
+     事件通过层级关系进行传递的过程就叫事件冒泡
+
+
+阻止事件冒泡的方式
+     IE:cancelBubble
+     现代浏览器：stopPropagation
+
+
+兼容写法
+  var ev=e||window.event;
+  if(ev.stopPropagation){
+      ev.stopPropagation();
+  }else{
+      ev.cancelBubble=true;
+  }

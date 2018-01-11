@@ -1,0 +1,240 @@
+Flexbox布局（Flexible Box)模块旨在提供一个更加有效的方式制定、调整和分布一个容器里的项目布局，即使他们的大小是未知或者是动态的。（这里我们称为Flex）。
+
+Flex布局主要思想是让容器有能力让其子项目能够改变其宽度、高度(甚至顺序)，以最佳方式填充可用空间（主要是为了适应所有类型的显示设备和屏幕大小）。Flex容器会使子项目（伸缩项目）扩展来填满可用空间，或缩小他们以防止溢出容器。
+
+
+最重要的是，Flexbox布局方向不可预知，他不像常规的布局（块就是从上到下，内联就从左到右）。而那些常规的适合页面布局，但对于支持大型或者杂的应用程序（特别是当他涉及到取向改变、缩放、拉伸和收缩等）就缺乏灵活性。
+
+注：Flexbox布局最适合应用程序的组件和小规模的布局，而网格布局更适合那些更大规模的布局。
+
+基本要素
+因为Flexbox是整个模块，而不是一个属性，它涉及很多东西，包括其整个组属性。他们当中一部分是容器（父元素，称为“伸缩容器”），另一部分是子元素（称为“伸缩项目”）。
+
+常规布局是基于块和内联流方向，而Flex布局是基于flex-flow流。请看看来自w3c规范中的这张图，解释了flex布局的主要思想。
+
+一个完整的Flexbox指南
+
+根据伸缩项目排列方式不同，主轴和侧轴方向也有所变化
+
+一个完整的Flexbox指南
+
+——大漠
+
+基本上，伸缩项目是沿着主轴（main axis），从主轴起点（main-start）到主轴终点（main-end）或者沿着侧轴（cross axis），从侧轴起点（cross-start）到侧轴终点（cross-end）排列。
+
+主轴（main axis）：伸缩容器的主轴，伸缩项目主要沿着这条轴进行排列布局。小心，它不一定是水平的；这主要取决于“justify-content”属性（详细见下文）。
+主轴起点（main-start）和主轴终点（main-end）：伸缩项目放置在伸缩容器内从主轴起点（main-start）向主轴终点（main-start）方向。
+主轴尺寸（main size）：伸缩项目在主轴方向的宽度或高度就是主轴的尺寸。伸缩项目主要的大小属性要么是宽度，要么是高度属性，由哪一个对着主轴方向决定。
+侧轴（cross axis）：垂直于主轴称为侧轴。它的方向主要取决于主轴方向。
+侧轴起点（cross-start）和侧轴终点（cross-end）：伸缩行的配置从容器的侧轴起点边开始，往侧轴终点边结束。
+侧轴尺寸（cross size）：伸缩项目的在侧轴方向的宽度或高度就是项目的侧轴长度，伸缩项目的侧轴长度属性是「width」或「height」属性，由哪一个对着侧轴方向决定。
+属性
+display:flex | inline-flex;(适用于伸缩容器，也就是伸缩项目的父元素)
+这个是用来定义伸缩容器，是内联还是块取决于设置的值。这个时候，他的所有子元素将变成flex文档流，称为伸缩项目。
+
+display: other values | flex | inline-flex;	
+请注意：
+
+CSS的columns在伸缩容器上没有效果。
+float、clear和vertical-align在伸缩项目上没有效果。
+flex-direction（适用于伸缩容器，也就是伸缩项目的父元素）
+这个主要用来创建主轴，从而定义了伸缩项目放置在伸缩容器的方向。
+
+flex-direction: row | row-reverse | column | column-reverse	
+row(默认值)：在“ltr”排版方式下从左向右排列；在“rtl”排版方式下从右向左排列。
+row-reverse：与row排列方向相反，在“ltr”排版方式下从右向左排列；在“rtl”排版方式下从左向右排列。
+column：类似 于row，不过是从上到下排列
+column-reverse：类似于row-reverse，不过是从下到上排列。
+主轴起点与主轴终点方向分别等同于当前书写模式的始与结方向。其中“ltr”所指文本书写方式是“left-to-right”也就是从左向右书写；而“rtl”所指的刚好与“ltr”方式相反，其书写方式是“right-to-left”，也就是从右向左书写。
+
+——大漠
+
+flex-wrap(适用于伸缩容器，也就是伸缩项目的父元素)
+这个主要用来定义伸缩容器里是单行还是多行显示，侧轴的方向决定了新行堆放的方向。
+
+flex-wrap: nowrap | wrap | wrap-reverse	
+nowrap(默认值)：伸缩容器单行显示，“ltr”排版下，伸缩项目从左到右排列；“rtl”排版上伸缩项目从右向左排列。
+wrap：伸缩容器多行显示，“ltr”排版下，伸缩项目从左到右排列；“rtl”排版上伸缩项目从右向左排列。
+wrap-reverse：伸缩容器多行显示，“ltr”排版下，伸缩项目从右向左排列；“rtl”排版下，伸缩项目从左到右排列。（和wrap相反）
+flex-flow（适用于伸缩容器，也就是伸缩项目的父元素）
+这个是“flex-direction”和“flex-wrap”属性的缩写版本。同时定义了伸缩容器的主轴和侧轴。其默认值为“row nowrap”。
+
+flex-flow: <‘flex-direction’> || <‘flex-wrap’>	
+justify-content（适用于伸缩容器，也就是伸缩项目的父元素）
+这个是用来定义伸缩项目沿着主轴线的对齐方式。当一行上的所有伸缩项目都不能伸缩或可伸缩但是已经达到其最大长度时，这一属性才会对多余的空间进行分配。当项目溢出某一行时，这一属性也会在项目的对齐上施加一些控制。
+
+justify-content: flex-start | flex-end | center | space-between | space-around	
+flex-start(默认值)：伸缩项目向一行的起始位置靠齐。
+flex-end：伸缩项目向一行的结束位置靠齐。
+center：伸缩项目向一行的中间位置靠齐。
+space-between：伸缩项目会平均地分布在行里。第一个伸缩项目一行中的最开始位置，最后一个伸缩项目在一行中最终点位置。
+space-around：伸缩项目会平均地分布在行里，两端保留一半的空间。
+一个完整的Flexbox指南
+
+align-item（适用于伸缩容器，也就是伸缩项目的父元素）
+这个主要用来定义伸缩项目可以在伸缩容器的当前行的侧轴上对齐方式。可以把他想像成侧轴（垂直于主轴）的“justify-content”。
+
+align-items: flex-start | flex-end | center | baseline | stretch	
+flex-start：伸缩项目在侧轴起点边的外边距紧靠住该行在侧轴起始的边。
+flex-end：伸缩项目在侧轴终点边的外边距靠住该行在侧轴终点的边 。
+center：伸缩项目的外边距盒在该行的侧轴上居中放置。
+baseline：伸缩项目根据他们的基线对齐。
+stretch（默认值）：伸缩项目拉伸填充整个伸缩容器。此值会使项目的外边距盒的尺寸在遵照「min/max-width/height」属性的限制下尽可能接近所在行的尺寸。
+一个完整的Flexbox指南
+
+align-content(适用于伸缩容器，也就是伸缩项目的父元素)
+这个属性主要用来调准伸缩行在伸缩容器里的对齐方式。类似于伸缩项目在主轴上使用“justify-content”一样。
+
+注：请注意本属性在只有一行的伸缩容器上没有效果。
+
+align-content: flex-start | flex-end | center | space-between | space-around | stretch	
+flex-start：各行向伸缩容器的起点位置堆叠。
+flex-end：各行向伸缩容器的结束位置堆叠。
+center：各行向伸缩容器的中间位置堆叠。
+space-between：各行在伸缩容器中平均分布。
+space-around：各行在伸缩容器中平均分布，在两边各有一半的空间。
+stretch（默认值）：各行将会伸展以占用剩余的空间。
+一个完整的Flexbox指南
+
+order（适用于伸缩项目，也就是伸缩容器的子元素）
+默认情况下，伸缩项目是按照文档流出现先后顺序排列。然而，“order”属性可以控制伸缩项目在他们的伸缩容器出现的顺序。
+
+order: <integer>	
+flex-grow（适用于伸缩项目，也就是伸缩容器的子元素）
+根据需要用来定义伸缩项目的扩展能力。它接受一个不带单位的值做为一个比例。主要用来决定伸缩容器剩余空间按比例应扩展多少空间。
+
+如果所有伸缩项目的“flex-grow”设置了“1”，那么每个伸缩项目将设置为一个大小相等的剩余空间。如果你给其中一个伸缩项目设置了“flex-grow”值为“2”，那么这个伸缩项目所占的剩余空间是其他伸缩项目所占剩余空间的两倍。
+
+flex-grow: <number> (默认值为： 0)	
+负值同样生效。
+
+flex-shrink（适用于伸缩项目，也就是伸缩容器的子元素）
+根据需要用来定义伸缩项目收缩的能力。
+
+flex-shrink: <number> (默认值为： 1)	
+负值同样生效。
+
+flex-basis(适用于伸缩项目，也就是伸缩容器的子元素)
+这个用来设置伸缩基准值，剩余的空间按比率进行伸缩。
+
+flex-basis: <length> | auto (默认值为： auto)	
+负值不合法。
+
+flex（适用于伸缩项目，也就是伸缩容器的子元素）
+这是“flex-grow”、“flex-shrink”和“flex-basis”三个属性的缩写。其中第二个和第三个参数（flex-shrink、flex-basis）是可选参数。默认值为“0 1 auto”。
+
+flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]	
+align-self（适用于伸缩项目，也就是伸缩容器的子元素）
+用来在单独的伸缩项目上覆写默认的对齐方式。
+
+属性值的介绍请参阅“align-items”的属性值。
+
+align-self: auto | flex-start | flex-end | center | baseline | stretch
+实例
+让我们先从一个非常简单的例子开始，解决一个几乎每天都会碰到的问题：完美的居中。如果你使用flexbox，没有比这更简单的方法。
+
+.parent {
+  display: flex;
+  height: 300px; /* Or whatever */
+}
+
+.child {
+  width: 100px;  /* Or whatever */
+  height: 100px; /* Or whatever */
+  margin: auto;  /* Magic! */
+}	
+这个依赖于设置“margin”值为“auto”值，自动获取伸缩容器中剩余的空间。所以设置垂直方向margin值为“auto”，可以使伸缩项目在伸缩容器的两上轴方向都完全集中。
+
+现在我们来使用一些其他的属性。
+
+考虑使用6个列表项，并且为了视觉审美给他设置了一个固定大小尺寸，但他们也有可能可以自动获取尺寸大小。我们希望他们能均匀的、很好的分布在水平轴上，就算当我们调整浏览器，他们也依然显示得很好（不使用媒体查询）。
+
+.flex-container {
+  /* 我们第一步要创建一个flex文档流（创建伸缩容器） */
+  display: flex;
+  
+  /* 然后我们定义伸缩流方向，并且可以换行
+   * 记得我们要这样设置:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+  
+  /* 然后我们定义了如何分配伸缩容器的剩余空间 */
+  justify-content: space-around;
+}	
+完成。其他的一切都不过是一些美化外观样式。下面是在codepen上展示的一个例子。到codepen上查看，并试着调整你浏览器窗口去看发生什么事？
+
+
+让我们试试别的。假设我们网站顶部有一个右对齐的导航，但是我们希望它在小屏幕和小型设备中能单列居中显示。非常简单。
+
+/* Large */
+.navigation {
+  display: flex;
+  flex-flow: row wrap;
+  /* 所有列面向主轴终点位置靠齐 */
+  justify-content: flex-end;
+}
+
+/* Medium screens */
+@media all and (max-width: 800px) {
+  .navigation {
+    /* 当在中等屏幕中, 导航项目居中显示，并且剩余空间平均分布在列表之间 */
+    justify-content: space-around;
+  }
+}
+
+/* Small screens */
+@media all and (max-width: 500px) {
+  .navigation {
+    /* 在小屏幕下, 我们没有足够空间行排列，但我们可以换成列排列 */
+    flex-direction: column;
+  }
+}	
+
+让我们尝试一些更灵活性的伸缩项目！关于移动先行，3列布局与页眉页脚全屏。和独立的文档顺序。
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+/* 设置所有标签宽度为100% */
+.header, 
+.main, 
+.nav, 
+.aside, 
+.footer {
+  flex: 1 100%;
+}
+
+/* 我们利用文档流顺序，考虑移动端先行
+ * 在这个例子中的顺序:
+ * 1. header
+ * 2. nav
+ * 3. main
+ * 4. aside
+ * 5. footer
+ */
+
+/* Medium screens */
+@media all and (min-width: 600px) {
+  /* 两个边栏在同一行 */
+  .aside { flex: 1 auto; }
+}
+
+/* Large screens */
+@media all and (min-width: 800px) {
+  /* 设置左边栏在主内容左边
+   * 设置主内容区域宽度是其他两个侧边栏宽度的两倍
+   */
+  .main { flex: 2 0px; }
+  
+  .aside-1 { order: 1; }
+  .main    { order: 2; }
+  .aside-2 { order: 3; }
+  .footer  { order: 4; }
+}	
+著作权归作者所有。
+商业转载请联系作者获得授权,非商业转载请注明出处。
+原文: http://www.w3cplus.com/css3/a-guide-to-flexbox.html © w3cplus.com
